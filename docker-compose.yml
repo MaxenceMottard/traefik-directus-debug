@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  api:
+    restart: always
+    networks:
+      - reverse-proxy
+    build:
+      context: ./
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.NODE.loadbalancer.server.port=3000
+      - traefik.http.routers.NODE.rule=Host(`domain.local`)
+      - traefik.http.routers.NODE.entrypoints=http
+  reverseproxy:
+    image: traefik:v2.5.3
+    restart: always
+    networks:
+      - reverse-proxy
+    volumes:
+      - ./conf/:/etc/traefik/
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./acme.json:/acme.json
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+
+networks:
+  reverse-proxy:
