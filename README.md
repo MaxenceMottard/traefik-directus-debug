@@ -3,8 +3,8 @@
 ## URLs
 
 - Traefik dashboard : http://localhost:8080
-- Application : http://domain.local
-- Application without Traefik : http://localhost:8055
+- Directus Application : http://domain.local
+- Directus Application without Traefik : http://localhost:8055
 - Example with simple NodeJS API : https://github.com/MaxenceMottard/traefik-directus-debug
 
 ## Setup
