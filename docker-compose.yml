@@ -18,7 +18,7 @@ services:
     networks:
       - reverse-proxy
     volumes:
-      - ./conf/:/etc/traefik/
+      - ./conf/:/etc/traefik
       - /var/run/docker.sock:/var/run/docker.sock
       - ./acme.json:/acme.json
     ports:
